@@ -7,8 +7,8 @@ from discord.ext import commands
 startup_extensions = [
 	"modules.owner"
 ]
-
-bot = commands.Bot(command_prefix=commands.when_mentioned_or('!'))
+prefix="-"
+bot = commands.Bot(command_prefix=commands.when_mentioned_or(prefix))
 
 #This will run when the bot starts
 @bot.event
@@ -16,7 +16,7 @@ async def on_ready():
 	print("Bot started")
 	print("Logged in as: {0}\nID: {0.id}".format(bot.user))
 
-	await bot.change_presence(activity=discord.Game(name="§help"))
+	await bot.change_presence(activity=discord.Game(name=prefix + "help"))
 
 @bot.command()
 async def test(ctx):
